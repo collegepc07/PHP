@@ -1,0 +1,55 @@
+/* <?php
+if (empty ($_POST["Fname"])) {
+ $errMsg = "Error! You didn't enter the First Name.";
+ echo $errMsg;
+} else {
+ $name = $_POST["Fname"];
+} 
+
+if (empty ($_POST["Lname"])) {
+ $errMsg = "Error! You didn't enter the Last Name.";
+ echo $errMsg;
+} else {
+ $name = $_POST["Lname"];
+} 
+
+if (empty ($_POST["email"])) {
+ $errMsg = "Error! You didn't enter the Email.";
+ echo $errMsg;
+} else {
+ $email = $_POST["email"];
+} 
+
+if (empty ($_POST["password"])) {
+ $errMsg = "Error! You didn't enter the Password.";
+ echo $errMsg;
+} else {
+ $password = $_POST["password"];
+} 
+
+?>
+*/
+
+
+<?php
+// Get form values
+$fname = $_POST["Fname"];
+$lname = $_POST["Lname"];
+$email = $_POST["email"];
+$password = $_POST["password"];
+
+// Check for empty fields
+if (empty($fname) || empty($lname) || empty($email) || empty($password)) {
+    echo "<p style='color:red;'>Please fill in all the fields!</p>";
+} else {
+    // Basic email format check
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        echo "<p style='color:red;'>Invalid email format!</p>";
+    } else {
+        echo "<p style='color:green;'>Form submitted successfully!</p>";
+        echo "First Name: $fname <br>";
+        echo "Last Name: $lname <br>";
+        echo "Email: $email <br>";
+    }
+}
+?>

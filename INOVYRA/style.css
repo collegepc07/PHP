@@ -772,6 +772,72 @@ footer {
   margin-bottom: 1.5rem;
 }
 
+/* Conversion Options */
+.conversion-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.format-button {
+  padding: 8px 16px;
+  border: 1px solid var(--border-color);
+  background: var(--card-bg);
+  color: var(--text-color);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 14px;
+}
+
+.format-button:hover {
+  background: var(--hover-bg);
+  border-color: var(--primary-color);
+}
+
+.format-button.active {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+/* Upload Section */
+.upload-section {
+  border: 2px dashed var(--border-color);
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  margin: 1.5rem 0;
+  transition: all 0.3s ease;
+}
+
+.upload-section.highlight {
+  border-color: var(--primary-color);
+  background-color: rgba(99, 102, 241, 0.05);
+}
+
+.upload-icon {
+  font-size: 3rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.upload-text {
+  margin: 1rem 0;
+  color: var(--text-muted);
+}
+
+.file-input {
+  display: none;
+}
+
+.file-name {
+  margin-top: 1rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
 .form-label {
   display: block;
   margin-bottom: 0.5rem;

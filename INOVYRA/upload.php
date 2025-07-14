@@ -270,6 +270,54 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file']) && !empty($_
   </footer>
 
   <script>
+    // Supported formats for conversion
+    const supportedFormats = {
+        'csv': ['xlsx', 'json', 'xml'],
+        'xlsx': ['csv', 'json', 'xls'],
+        'xls': ['csv', 'xlsx', 'json'],
+        'json': ['csv', 'xlsx'],
+        'xml': ['csv', 'json']
+    };
+
+    // Format display names
+    const formatNames = {
+        'csv': 'CSV',
+        'xlsx': 'Excel (XLSX)',
+        'xls': 'Excel (XLS)',
+        'json': 'JSON',
+        'xml': 'XML'
+    };
+
+    // Update conversion options based on selected file
+    function updateConversionOptions(fileExt) {
+        const container = document.getElementById('formatOptions');
+        const conversionSection = document.getElementById('conversionOptions');
+        container.innerHTML = '';
+        
+        if (fileExt && supportedFormats[fileExt]) {
+            conversionSection.style.display = 'block';
+            supportedFormats[fileExt].forEach(format => {
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.className = 'format-button';
+                button.textContent = formatNames[format] || format.toUpperCase();
+                button.dataset.format = format;
+                button.onclick = function() {
+                    // Update active button
+                    document.querySelectorAll('.format-button').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                    document.getElementById('targetFormat').value = format;
+                };
+                container.appendChild(button);
+            });
+        } else {
+            conversionSection.style.display = 'none';
+            document.getElementById('targetFormat').value = '';
+        }
+    }
+
     // Alert handler
     function showAlert(message, alertClass, icon, isSuccess = false) {
       const resultsBox = document.getElementById('resultsBox');
